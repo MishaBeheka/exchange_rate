@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AuthenticationController {
+public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-    public AuthenticationController(RegistrationService registrationService) {
+    public RegistrationController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }
 
@@ -20,6 +20,7 @@ public class AuthenticationController {
     public String showRegistrationForm() {
         return "registrationForm";
     }
+
     @PostMapping(value = "/registration")
     public String registration(RegisteredUserRequestDto userRequestDto) {
         registrationService.register(userRequestDto.getEmail(),
