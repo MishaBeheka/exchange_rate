@@ -4,4 +4,6 @@ import com.dev.task.exchange_rate.model.Role;
 
 public interface RoleService {
     Role create(Role role);
+
+    Role findRoleByRoleName(String roleName);
 }
