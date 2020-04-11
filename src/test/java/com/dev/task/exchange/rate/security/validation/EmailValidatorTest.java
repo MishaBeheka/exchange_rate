@@ -15,18 +15,18 @@ class EmailValidatorTest {
     private static final String INVALID_EMAIL_WITH_DOLLAR = "Somebody$com.net";
 
     private EmailValidator emailValidator = new EmailValidator();
-    private ConstraintValidatorContext constraintValidatorContext = mock(ConstraintValidatorContext.class);
+    private ConstraintValidatorContext mockConstraintValidatorContext = mock(ConstraintValidatorContext.class);
 
     @Test
     void whenGetValidEmail() {
-        assertTrue(emailValidator.isValid(VALID_GMAIL_EMAIL, constraintValidatorContext));
-        assertTrue(emailValidator.isValid(VALID_UKR_NET_EMAIL, constraintValidatorContext));
-        assertTrue(emailValidator.isValid(VALID__BIGMIR_NET_EMAIL, constraintValidatorContext));
+        assertTrue(emailValidator.isValid(VALID_GMAIL_EMAIL, mockConstraintValidatorContext));
+        assertTrue(emailValidator.isValid(VALID_UKR_NET_EMAIL, mockConstraintValidatorContext));
+        assertTrue(emailValidator.isValid(VALID__BIGMIR_NET_EMAIL, mockConstraintValidatorContext));
     }
     @Test
     public void whenGetInvalidEmail() {
-        assertFalse(emailValidator.isValid(INVALID_KOL_EMAIL, constraintValidatorContext));
-        assertFalse(emailValidator.isValid(INVALID_NOT_DOG_EMAIL, constraintValidatorContext));
-        assertFalse(emailValidator.isValid(INVALID_EMAIL_WITH_DOLLAR, constraintValidatorContext));
+        assertFalse(emailValidator.isValid(INVALID_KOL_EMAIL, mockConstraintValidatorContext));
+        assertFalse(emailValidator.isValid(INVALID_NOT_DOG_EMAIL, mockConstraintValidatorContext));
+        assertFalse(emailValidator.isValid(INVALID_EMAIL_WITH_DOLLAR, mockConstraintValidatorContext));
     }
 }
