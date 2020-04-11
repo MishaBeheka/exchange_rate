@@ -13,6 +13,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Controller
 public class GettingExchangeRateController {
@@ -24,10 +25,13 @@ public class GettingExchangeRateController {
     private static final String BTC_ETH = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=ETH";
     private static final String BTC_UAH = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=UAH";
     private static final List<String> URLS = new ArrayList<>();
-    private static final List<ExchangeRate> EXCHANGE_RATE_LIST = new ArrayList<>();
+    private static List<ExchangeRate> exchangeRateList = new ArrayList<>();
 
     @GetMapping(value = "/current-exchange-rate")
     public String showExchangeRate(Model model) {
+        if (!exchangeRateList.isEmpty()) {
+            exchangeRateList = new ArrayList<>();
+        }
         URLS.add(USD_UAH);
         URLS.add(EUR_USD);
         URLS.add(USD_RUB);
@@ -36,7 +40,7 @@ public class GettingExchangeRateController {
         URLS.add(BTC_ETH);
         URLS.add(BTC_UAH);
         URLS.forEach(this::parseInputData);
-        model.addAttribute("exchangeRateList", EXCHANGE_RATE_LIST);
+        model.addAttribute("exchangeRateList", exchangeRateList);
         return "showExchangeRateTable";
     }
 
@@ -52,7 +56,7 @@ public class GettingExchangeRateController {
             ExchangeRate exchangeRate = new ExchangeRate();
             exchangeRate.setCurrency(String.format("%s%s%s", rate[0], "/", rate[1]));
             exchangeRate.setCorrelation(Double.parseDouble(rate[2]));
-            EXCHANGE_RATE_LIST.add(exchangeRate);
+            exchangeRateList.add(exchangeRate);
         } catch (Exception e) {
             throw new RuntimeException();
         }
