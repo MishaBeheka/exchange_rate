@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User table</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/">HOME</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">REGISTER THE NEW USER</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/current-exchange-rate">VIEW THE CURRENT EXCHANGE RATE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/retrieve-all-users"> RETRIEVE ALL USERS</a>
+            </li>
+        </ul>
+    </div>
+    <a class="navbar-brand" href="/logout">LOGOUT</a>
+</nav>
+<hr>
+<div class="container text-center" th:switch="${users}">
+    <table class="table table-bordered text-center">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th>ID</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+            <td th:text="${user.getPassword()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

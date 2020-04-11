@@ -1,4 +1,4 @@
-package com.dev.task.exchange_rate;
+package com.dev.task.exchange.rate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

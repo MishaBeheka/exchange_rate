@@ -1,4 +1,4 @@
-package com.dev.task.exchange_rate;
+package com.dev.task.exchange.rate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
