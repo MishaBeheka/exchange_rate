@@ -15,7 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfig(@Qualifier("customUserDetails") UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    public SecurityConfig(@Qualifier("customUserDetails") UserDetailsService userDetailsService,
+                          PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -39,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/registration").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/registration").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/current-exchange-rate").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
