@@ -30,7 +30,7 @@ public class InitializeController {
         roleService.create(role);
 
         User user = new User();
-        user.setEmail("AdminEmail");
+        user.setEmail("FirstEmail@gmail.com");
         user.setPassword(passwordEncoder.encode("1"));
         user.getRoles().add(role);
         userService.create(user);
