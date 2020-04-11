@@ -6,12 +6,14 @@ import static org.springframework.security.core.userdetails.User.withUsername;
 import com.dev.task.exchange_rate.model.Role;
 import com.dev.task.exchange_rate.model.User;
 import com.dev.task.exchange_rate.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CustomUserDetails implements UserDetailsService {
 
     private final UserService userService;
@@ -24,6 +26,7 @@ public class CustomUserDetails implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userService.findUserByEmail(email);
         if (user == null) {
+            log.info("Can't find user with email " + email);
             throw new UsernameNotFoundException("Can't find user with email " + email);
         }
         UserBuilder builder = withUsername(email);

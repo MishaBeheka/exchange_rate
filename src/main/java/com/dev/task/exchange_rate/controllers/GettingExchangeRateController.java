@@ -10,11 +10,13 @@ import java.net.URLConnection;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@Slf4j
 public class GettingExchangeRateController {
     private static final String USD_UAH = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=USD&tsyms=UAH";
     private static final String EUR_USD = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=EUR&tsyms=USD";
@@ -57,7 +59,11 @@ public class GettingExchangeRateController {
             exchangeRate.setCorrelation(Double.parseDouble(rate[2]));
             exchangeRateList.add(exchangeRate);
         } catch (Exception e) {
-            throw new RuntimeException();
+            log.info("Can't get exchange rate from URL " + url);
+            ExchangeRate exchangeRate = new ExchangeRate();
+            exchangeRate.setCurrency("Not found");
+            exchangeRate.setCorrelation(0D);
+            exchangeRateList.add(exchangeRate);
         }
     }
 }

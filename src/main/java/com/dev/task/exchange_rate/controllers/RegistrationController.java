@@ -4,11 +4,13 @@ import com.dev.task.exchange_rate.dto.RegisteredUserRequestDto;
 import com.dev.task.exchange_rate.services.RegistrationService;
 
 import javax.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@Slf4j
 public class RegistrationController {
 
     private final RegistrationService registrationService;
@@ -26,6 +28,7 @@ public class RegistrationController {
     public String registration(@Valid RegisteredUserRequestDto userRequestDto) {
         registrationService.register(userRequestDto.getEmail(),
                 userRequestDto.getPassword());
+        log.info("Registered a new user with email " + userRequestDto.getEmail());
         return "index";
     }
 }
