@@ -2,8 +2,8 @@ package com.dev.task.exchange.rate.controllers;
 
 import com.dev.task.exchange.rate.model.Role;
 import com.dev.task.exchange.rate.model.User;
-import com.dev.task.exchange.rate.services.UserService;
 import com.dev.task.exchange.rate.services.RoleService;
+import com.dev.task.exchange.rate.services.UserService;
 import javax.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,9 @@ public class InitializeController {
     private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
 
-    public InitializeController(UserService userService, RoleService roleService, PasswordEncoder passwordEncoder) {
+    public InitializeController(UserService userService,
+                                RoleService roleService,
+                                PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;

@@ -1,7 +1,7 @@
 package com.dev.task.exchange.rate.security.validation;
 
-import com.dev.task.exchange.rate.dto.RegisteredUserRequestDto;
 import com.dev.task.exchange.rate.annotations.PasswordValidate;
+import com.dev.task.exchange.rate.dto.RegisteredUserRequestDto;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

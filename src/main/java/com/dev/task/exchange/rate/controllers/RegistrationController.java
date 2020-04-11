@@ -2,7 +2,6 @@ package com.dev.task.exchange.rate.controllers;
 
 import com.dev.task.exchange.rate.dto.RegisteredUserRequestDto;
 import com.dev.task.exchange.rate.services.RegistrationService;
-
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

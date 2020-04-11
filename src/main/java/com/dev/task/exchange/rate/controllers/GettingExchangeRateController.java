@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -47,8 +46,8 @@ public class GettingExchangeRateController {
 
     private void parseInputData(String url) {
         try {
-            URL currentURL = new URL(url);
-            URLConnection connection = currentURL.openConnection();
+            URL currentUrl = new URL(url);
+            URLConnection connection = currentUrl.openConnection();
             connection.connect();
             JsonElement element = JsonParser
                     .parseReader(new InputStreamReader((InputStream) connection.getContent()));

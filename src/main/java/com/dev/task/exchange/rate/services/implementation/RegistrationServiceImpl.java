@@ -3,8 +3,8 @@ package com.dev.task.exchange.rate.services.implementation;
 import com.dev.task.exchange.rate.model.Role;
 import com.dev.task.exchange.rate.model.User;
 import com.dev.task.exchange.rate.services.RegistrationService;
-import com.dev.task.exchange.rate.services.UserService;
 import com.dev.task.exchange.rate.services.RoleService;
+import com.dev.task.exchange.rate.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    public RegistrationServiceImpl(UserService userService, PasswordEncoder passwordEncoder, RoleService roleService) {
+    public RegistrationServiceImpl(UserService userService,
+                                   PasswordEncoder passwordEncoder,
+                                   RoleService roleService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
