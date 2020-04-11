@@ -3,6 +3,7 @@ package com.dev.task.exchange_rate.services.implementation;
 import com.dev.task.exchange_rate.model.User;
 import com.dev.task.exchange_rate.repository.UserRepository;
 import com.dev.task.exchange_rate.services.UserService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +23,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
