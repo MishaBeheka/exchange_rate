@@ -14,7 +14,7 @@ public class RetrieveAllUsersController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "retrieve-all-users")
+    @GetMapping(value = "/retrieve-all-users")
     public String retrieveAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "showUserTable";
