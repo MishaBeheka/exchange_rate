@@ -3,6 +3,7 @@ package com.dev.task.exchange_rate.controllers;
 import com.dev.task.exchange_rate.dto.RegisteredUserRequestDto;
 import com.dev.task.exchange_rate.services.RegistrationService;
 
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class RegistrationController {
     }
 
     @PostMapping(value = "/registration")
-    public String registration(RegisteredUserRequestDto userRequestDto) {
+    public String registration(@Valid RegisteredUserRequestDto userRequestDto) {
         registrationService.register(userRequestDto.getEmail(),
                 userRequestDto.getPassword());
         return "index";
